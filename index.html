@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deadline Line — Your Deadline, Your Design: Countdown Lock Screen Studio</title>
+  <meta name="description" content="Turn any upcoming deadline into a clock-safe, ready-to-set Phone & 4K Desktop Countdown Lock Screen with backward-planned T-minus milestones and daily calendar reminders." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Studio Header matching clean Handshake editorial precision -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <span class="brand-line"></span>
+          <span class="brand-dot"></span>
+        </span>
+        <div class="brand-text">
+          <span class="brand-title">Deadline Line</span>
+          <span class="brand-sub">Your Deadline, Your Design · Countdown Lock Screen Studio</span>
+        </div>
+      </div>
+
+      <nav class="step-nav" aria-label="Mission steps">
+        <button class="step-pill active" data-step="1" type="button">
+          <span class="step-roman">I.</span> Map Milestones
+        </button>
+        <button class="step-pill" data-step="2" type="button">
+          <span class="step-roman">II.</span> Design Lock Screen
+        </button>
+        <button class="step-pill" data-step="3" type="button">
+          <span class="step-roman">III.</span> Reminders &amp; Export
+        </button>
+      </nav>
+
+      <div class="topbar-actions">
+        <button id="btnLiveFullscreen" class="btn btn-ghost" type="button" title="Run as a live ticking fullscreen lock screen">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+          Live Mode
+        </button>
+        <button id="btnShareLink" class="btn btn-ghost" type="button" title="Copy shareable link to your exact lock screen">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Share Link
+        </button>
+        <button id="btnQuickDownload" class="btn btn-primary" type="button">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Lock Screen
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main 2-Column Studio Workspace -->
+  <main class="workspace">
+    <!-- LEFT WORKBENCH: Exact 3-Part Handshake Mission Flow -->
+    <section class="workbench" aria-label="Mission Builder">
+      <!-- Mission Brief Banner (echoing Handshake's Project Brief card) -->
+      <div class="card brief-card">
+        <div class="brief-head">
+          <span class="info-icon" aria-hidden="true">i</span>
+          <span class="brief-title">Project Brief · Google Gemini Mission</span>
+          <a class="btn-gemini" href="https://gemini.google.com/?utm_source=handshake" target="_blank" rel="noopener noreferrer">
+            Open Gemini ↗
+          </a>
+        </div>
+        <p class="brief-copy">
+          Work backward from your target date into concise <strong>T-minus milestones</strong>, design a
+          <strong>clock-safe lock screen</strong> ready for your phone or laptop today, and export daily reminders.
+        </p>
+        <div class="preset-row" id="presetBar" role="group" aria-label="Quick deadline presets"></div>
+      </div>
+
+      <!-- STEP I: Map Out Your Milestones -->
+      <section class="step-panel active" data-panel="1">
+        <div class="section-heading">
+          <h2>I. Map Out Your Milestones</h2>
+          <span class="step-badge" id="daysRemainingBadge">T-26 DAYS</span>
+        </div>
+
+        <div class="card form-card">
+          <div class="field-grid">
+            <div class="field field-wide">
+              <label for="inputTitle">Your Deadline Goal</label>
+              <input id="inputTitle" type="text" maxlength="38" placeholder="e.g., CAPSTONE DEMO DAY" />
+            </div>
+            <div class="field">
+              <label for="inputDate">Target Date</label>
+              <input id="inputDate" type="date" />
+            </div>
+            <div class="field">
+              <label for="inputLineCode">Route / Code Tag</label>
+              <input id="inputLineCode" type="text" maxlength="12" placeholder="LINE 26" />
+            </div>
+            <div class="field field-wide">
+              <label for="inputSubtitle">Short Subtitle</label>
+              <input id="inputSubtitle" type="text" maxlength="46" placeholder="Ship & Present v1.0" />
+            </div>
+            <div class="field field-wide">
+              <label for="inputDailyFocus">Daily Accountability Habit (shown in footer)</label>
+              <input id="inputDailyFocus" type="text" maxlength="78" placeholder="Ship one visible piece before 9 PM." />
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="milestones-header">
+            <div>
+              <h3>T-Minus Milestones <span class="muted-hint">(keep under 5 words)</span></h3>
+            </div>
+            <div class="milestones-actions">
+              <button id="btnAutoPlan" class="btn btn-subtle btn-sm" type="button" title="Automatically calculate backward T-minus milestones from your target date">
+                ✦ Auto Backward-Plan
+              </button>
+              <button id="btnAddMilestone" class="btn btn-ghost btn-sm" type="button">+ Add Stop</button>
+            </div>
+          </div>
+
+          <div id="milestoneList" class="milestone-list"></div>
+
+          <!-- Exact Build Page Step I Gemini Prompt Card -->
+          <details class="prompt-accordion" open>
+            <summary>
+              <span>Gemini Prompt · Build Your Backward Schedule</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </summary>
+            <div class="prompt-body">
+              <pre id="promptStep1" class="prompt-code"></pre>
+              <button class="btn btn-subtle btn-sm copy-btn" data-copy="step1" type="button">Copy Step I Prompt</button>
+            </div>
+          </details>
+
+          <div class="step-footer">
+            <span class="privacy-note">No private info collected — everything runs locally in your browser.</span>
+            <button class="btn btn-primary" data-goto="2" type="button">Next: Design Lock Screen →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP II: Design Your Lock Screen -->
+      <section class="step-panel" data-panel="2">
+        <div class="section-heading">
+          <h2>II. Design Your Lock Screen</h2>
+          <span class="step-badge">CLOCK-SAFE</span>
+        </div>
+
+        <div class="card form-card">
+          <label class="group-label">Choose a Deadline-Matched Style</label>
+          <div id="themeGrid" class="theme-grid"></div>
+
+          <div class="control-row">
+            <div class="control-block">
+              <label class="group-label">Palette Mode</label>
+              <div class="segmented" id="modeSegment">
+                <button type="button" class="seg-btn active" data-mode="dark">Midnight / OLED</button>
+                <button type="button" class="seg-btn" data-mode="light">Daylight / Paper</button>
+              </div>
+            </div>
+            <div class="control-block">
+              <label class="group-label">Target Device Format</label>
+              <div class="segmented" id="deviceSegment">
+                <button type="button" class="seg-btn active" data-device="iphone">iPhone</button>
+                <button type="button" class="seg-btn" data-device="android">Android</button>
+                <button type="button" class="seg-btn" data-device="desktop">Desktop 4K</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="toggle-strip">
+            <label class="switch-row">
+              <input id="toggleOsChrome" type="checkbox" checked />
+              <span>Preview real OS lock clock &amp; icons</span>
+            </label>
+            <label class="switch-row">
+              <input id="toggleSafeZones" type="checkbox" />
+              <span>Safe-Zone X-Ray (verify zero overlap)</span>
+            </label>
+            <label class="switch-row">
+              <input id="toggleLiveClock" type="checkbox" />
+              <span>Use live system clock (vs 9:41)</span>
+            </label>
+          </div>
+
+          <div class="ref-upload-bar">
+            <div class="ref-upload-copy">
+              <span class="ref-title">Custom Reference / Backdrop Image <span class="muted-hint">(optional, stays local)</span></span>
+              <span class="muted-hint" id="refFileStatus">Using built-in procedural theme artwork</span>
+            </div>
+            <div class="ref-upload-actions">
+              <label class="btn btn-subtle btn-sm" for="inputBgImage">Upload Image</label>
+              <input id="inputBgImage" type="file" accept="image/*" hidden />
+              <button id="btnClearBgImage" class="btn btn-ghost btn-sm" type="button" hidden>Clear</button>
+            </div>
+          </div>
+
+          <details class="prompt-accordion" open>
+            <summary>
+              <span>Gemini Prompt · Multimodal Lock Screen Style</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </summary>
+            <div class="prompt-body">
+              <pre id="promptStep2" class="prompt-code"></pre>
+              <button class="btn btn-subtle btn-sm copy-btn" data-copy="step2" type="button">Copy Step II Prompt</button>
+            </div>
+          </details>
+
+          <div class="step-footer">
+            <button class="btn btn-ghost" data-goto="1" type="button">← Milestones</button>
+            <button class="btn btn-primary" data-goto="3" type="button">Next: Reminders &amp; Export →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP III: Keep Yourself on Track with Reminders & Export -->
+      <section class="step-panel" data-panel="3">
+        <div class="section-heading">
+          <h2>III. Keep Yourself on Track with Reminders</h2>
+          <span class="step-badge">READY TODAY</span>
+        </div>
+
+        <div class="card form-card">
+          <div class="reminder-row">
+            <div class="field">
+              <label for="inputReminderTime">Daily Check-In Time</label>
+              <input id="inputReminderTime" type="time" value="08:30" />
+            </div>
+            <div class="reminder-cta">
+              <button id="btnDownloadIcs" class="btn btn-primary btn-full" type="button">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Download Daily Calendar Reminders (.ics)
+              </button>
+              <span class="muted-hint">Imports into Google Calendar, Apple Calendar &amp; Outlook</span>
+            </div>
+          </div>
+
+          <details class="prompt-accordion" open>
+            <summary>
+              <span>Gemini Prompts · Daily Push &amp; Google Calendar Reminders</span>
+              <span class="chev" aria-hidden="true">▾</span>
+            </summary>
+            <div class="prompt-body">
+              <div class="prompt-label">Daily Notification Prompt</div>
+              <pre id="promptStep3Push" class="prompt-code"></pre>
+              <button class="btn btn-subtle btn-sm copy-btn" data-copy="step3Push" type="button">Copy Daily Prompt</button>
+
+              <div class="prompt-label" style="margin-top: 12px;">Google Calendar Import Prompt</div>
+              <pre id="promptStep3Cal" class="prompt-code"></pre>
+              <button class="btn btn-subtle btn-sm copy-btn" data-copy="step3Cal" type="button">Copy Calendar Prompt</button>
+            </div>
+          </details>
+
+          <div class="divider"></div>
+
+          <label class="group-label">One-Click High-Res Exports (Clean Wallpaper — No Fake OS Clock)</label>
+          <div class="export-grid">
+            <button class="export-card" data-export="iphone" type="button">
+              <span class="export-title">iPhone Lock Screen</span>
+              <span class="export-meta">1290 × 2796 PNG · Retina 9:19.5</span>
+            </button>
+            <button class="export-card" data-export="android" type="button">
+              <span class="export-title">Android Lock Screen</span>
+              <span class="export-meta">1440 × 3120 PNG · Fingerprint-Safe</span>
+            </button>
+            <button class="export-card" data-export="desktop" type="button">
+              <span class="export-title">Desktop 4K Lock Screen</span>
+              <span class="export-meta">3840 × 2160 PNG · 16:9 UHD</span>
+            </button>
+            <button class="export-card export-card-accent" data-export="cover" type="button">
+              <span class="export-title">Handshake 3:2 Cover</span>
+              <span class="export-meta">2400 × 1600 PNG · Showcase Ready</span>
+            </button>
+          </div>
+
+          <div class="step-footer">
+            <button class="btn btn-ghost" data-goto="2" type="button">← Style &amp; Device</button>
+            <button id="btnShareLinkFooter" class="btn btn-subtle" type="button">Copy Shareable Project URL</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- RIGHT HERO STAGE: Authentic Real-Device Lock Screen Preview -->
+    <aside class="stage-column" aria-label="Live Lock Screen Preview">
+      <div class="stage-card">
+        <div class="stage-toolbar">
+          <div class="stage-device-tabs" id="stageDeviceTabs">
+            <button class="stage-tab active" data-device="iphone" type="button">iPhone</button>
+            <button class="stage-tab" data-device="android" type="button">Android</button>
+            <button class="stage-tab" data-device="desktop" type="button">Desktop 4K</button>
+          </div>
+          <div class="stage-toggles">
+            <button id="btnStageChrome" class="chip-toggle active" type="button">OS Lock UI</button>
+            <button id="btnStageSafe" class="chip-toggle" type="button">Safe Zones</button>
+          </div>
+        </div>
+
+        <div class="stage-viewport" id="stageViewport">
+          <!-- Device Bezel Frame dynamically adapts to iPhone / Android / Desktop -->
+          <div class="device-frame device-iphone" id="deviceFrame">
+            <div class="device-screen" id="deviceScreen">
+              <canvas id="previewCanvas" class="preview-canvas"></canvas>
+
+              <!-- Authentic Real OS Lock Screen UI Overlay (Hidden when exporting PNG!) -->
+              <div class="os-overlay" id="osOverlay" aria-hidden="true">
+                <!-- iPhone Chrome -->
+                <div class="os-chrome os-iphone">
+                  <div class="ios-status">
+                    <span class="ios-carrier">5G</span>
+                    <div class="dynamic-island"></div>
+                    <div class="ios-indicators">
+                      <span class="sig-bars"><i></i><i></i><i></i><i></i></span>
+                      <span class="bat-icon"><i></i></span>
+                    </div>
+                  </div>
+                  <div class="ios-clock-group">
+                    <div class="ios-date" id="iosDate">Sunday, November 22</div>
+                    <div class="ios-time" id="iosTime">9:41</div>
+                  </div>
+                  <div class="ios-bottom-bar">
+                    <div class="ios-shortcut" aria-label="Flashlight">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6c0 2-2 2-2 4v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V10c0-2-2-2-2-4V2h12z"/><line x1="6" y1="6" x2="18" y2="6"/></svg>
+                    </div>
+                    <div class="ios-shortcut" aria-label="Camera">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    </div>
+                  </div>
+                  <div class="ios-home-pill"></div>
+                </div>
+
+                <!-- Android Pixel Chrome -->
+                <div class="os-chrome os-android">
+                  <div class="and-status">
+                    <span>Google Fi</span>
+                    <div class="and-camera-dot"></div>
+                    <span>78%</span>
+                  </div>
+                  <div class="and-clock-group">
+                    <div class="and-time" id="andTime">09:41</div>
+                    <div class="and-date" id="andDate">Sun, Nov 22 · 72°F</div>
+                  </div>
+                  <div class="and-bottom">
+                    <div class="and-shortcut">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <div class="and-fingerprint" title="Under-display fingerprint safe zone">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4"/><path d="M14 13.12c0 2.38 0 6.38-1 8.88"/><path d="M17.29 21.02c.12-.6.43-2.3.5-3.02"/><path d="M2 12a10 10 0 0 1 18-6"/><path d="M2 16h.01"/><path d="M21.8 16c.2-2 .131-5.354 0-6"/><path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2"/><path d="M8.65 22c.21-.66.45-1.32.57-2"/><path d="M9 6.8a6 6 0 0 1 9 5.2v2"/></svg>
+                    </div>
+                    <div class="and-shortcut">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                    </div>
+                  </div>
+                  <div class="ios-home-pill"></div>
+                </div>
+
+                <!-- Desktop macOS / Windows Chrome -->
+                <div class="os-chrome os-desktop">
+                  <div class="desk-clock-group">
+                    <div class="desk-date" id="deskDate">Sunday, November 22</div>
+                    <div class="desk-time" id="deskTime">9:41</div>
+                  </div>
+                  <div class="desk-login-pill">
+                    <span class="desk-avatar"></span>
+                    <span>Touch ID or Enter Password</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Safe-Zone Inspection X-Ray Overlay -->
+              <div class="safe-overlay" id="safeOverlay" aria-hidden="true">
+                <div class="safe-zone safe-top"><span>PROTECTED OS CLOCK &amp; WIDGET ZONE (CLEAR)</span></div>
+                <div class="safe-zone safe-bottom"><span>PROTECTED SHORTCUTS / FINGERPRINT ZONE (CLEAR)</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Rubric & Readiness Strip -->
+        <div class="readiness-strip">
+          <div class="readiness-item"><span class="ok-dot">✓</span> Clock Safe Zone Clear</div>
+          <div class="readiness-item"><span class="ok-dot">✓</span> Bottom Icons Clear</div>
+          <div class="readiness-item" id="readinessCount"><span class="ok-dot">✓</span> 5 T-Minus Milestones</div>
+          <div class="readiness-item" id="readinessRes"><span class="ok-dot">✓</span> 1290×2796 Retina PNG</div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Live Ticking Fullscreen Lock Screen Modal -->
+  <div id="liveModal" class="live-modal" hidden>
+    <canvas id="liveCanvas" class="live-canvas"></canvas>
+    <div class="live-hud">
+      <div class="live-clock-block" id="liveClockBlock">
+        <div class="live-date" id="liveDate">Sunday, November 22</div>
+        <div class="live-time" id="liveTime">09:41</div>
+        <div class="live-ticker" id="liveTicker">26d · 03h · 18m · 42s remaining</div>
+      </div>
+    </div>
+    <button id="btnCloseLive" class="live-close" type="button">Exit Live Lock Screen (Esc)</button>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="planner.js"></script>
+  <script src="ics.js"></script>
+  <script src="renderer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
